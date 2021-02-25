@@ -1,5 +1,5 @@
 import React from 'react';
-import foods from '../foods.json';
+
 class FoodBox extends React.Component {
   render() {
     return (
@@ -7,13 +7,13 @@ class FoodBox extends React.Component {
         <article className="media">
           <div className="media-left">
             <figure className="image is-64x64">
-              <img src={this.props.image} />
+              <img src={this.props.image} alt="" />
             </figure>
           </div>
           <div className="media-content">
             <div className="content">
               <p>
-                <strong>{this.props.food}</strong> <br />
+                <strong>{this.props.name}</strong> <br />
                 <small>{this.props.calories}</small>
               </p>
             </div>
@@ -33,4 +33,5 @@ class FoodBox extends React.Component {
     );
   }
 }
+
 export default FoodBox;
