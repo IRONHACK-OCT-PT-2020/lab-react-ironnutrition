@@ -1,6 +1,11 @@
 import React from 'react';
 
 class FoodBox extends React.Component {
+
+  state = {
+    quantity: 1
+  }
+
   render() {
     return (
       <div className="box">
@@ -21,10 +26,21 @@ class FoodBox extends React.Component {
           <div className="media-right">
             <div className="field has-addons">
               <div className="control">
-                <input className="input" type="number" value="1" />
+                <input
+                  className="input"
+                  type="number"
+                  min="1"
+                  onChange={(e) => this.setState({ quantity: e.target.value })}
+                  value={this.state.quantity} />
               </div>
               <div className="control">
-                <button className="button is-info">+</button>
+                <button onClick={(e) => {
+                  let { name, calories } = { ...this.props }
+                  let quantity = this.state.quantity
+                  this.props.bananas({ name, calories, quantity })
+                }
+                }
+                  className="button is-info">+</button>
               </div>
             </div>
           </div>
@@ -35,3 +51,11 @@ class FoodBox extends React.Component {
 }
 
 export default FoodBox;
+
+
+
+
+
+
+
+

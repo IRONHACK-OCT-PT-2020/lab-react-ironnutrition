@@ -15,11 +15,35 @@ class App extends React.Component {
       'https://media.istockphoto.com/photos/ice-cream-sundae-picture-id1143594100?k=6&m=1143594100&s=612x612&w=0&h=GwEisVKa3aPJjDBjYxN_l8XqNx2Peu--hF5ty-UNt4I=',
   };
 
+
+
+
+
+
+
+
+
+
   showFoods = () => {
     return this.state.allFoods.map((eachFood, i) => {
-      return <FoodBox key={i} {...eachFood} />;
+      return <FoodBox key={i} {...eachFood} bananas={this.addFoodToList} />;
     });
   };
+
+  addFoodToList = (food) => {
+    console.log(`bugs bunny!! add Food to list`, food);
+    //Get the food i clicked >> which food???? 
+
+
+  }
+
+
+
+
+
+
+
+
 
   addNewFood = () => {
     // console.log("help!")
