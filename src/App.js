@@ -9,6 +9,10 @@ class App extends React.Component {
     allFoods: foods,
     // originalFoodList: foods,
     hideForm: false,
+    todaysFood: {
+      // pizza: { name: 'pizza', calories: 400, quantity: 5 },
+      // salad: { name: 'salad', calories: 150, quantity: 2 }
+    },
     name: '',
     calories: '',
     image:
@@ -31,16 +35,33 @@ class App extends React.Component {
   };
 
   addFoodToList = (food) => {
-    console.log(`bugs bunny!! add Food to list`, food);
-    //Get the food i clicked >> which food???? 
 
+    let todaysFood = { ...this.state.todaysFood }
+    todaysFood[food.name] = food
+    this.setState({ todaysFood })
 
   }
+  showTodaysFood = () => {
+    let totalCalories = 0;
+    let items = []
+    for (let key in this.state.todaysFood) {
+      if (this.state.todaysFood[key].quantity > 0) {
+        items.push(
+          <li>
+            Name: {this.state.todaysFood[key].name}
+            Calories:{this.state.todaysFood[key].calories * this.state.todaysFood[key].quantity}
+            Quantity: {this.state.todaysFood[key].quantity}
+          </li>
+        )
+        totalCalories += this.state.todaysFood[key].calories * this.state.todaysFood[key].quantity
+      }
+    }
 
+    items.unshift(<h1>Total Calories is {totalCalories}</h1>)
 
+    return items
 
-
-
+  }
 
 
 
@@ -106,6 +127,13 @@ class App extends React.Component {
 
         <button onClick={this.addNewFood}>Add New Food</button>
 
+        <br /><br />
+        <label>Todays Food:</label>
+        <ul>
+          {this.showTodaysFood()}
+        </ul>
+
+        <br />
         <ul>{this.showFoods()};</ul>
       </div>
     );

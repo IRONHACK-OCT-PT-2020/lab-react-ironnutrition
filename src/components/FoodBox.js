@@ -29,7 +29,7 @@ class FoodBox extends React.Component {
                 <input
                   className="input"
                   type="number"
-                  min="1"
+                  min="0"
                   onChange={(e) => this.setState({ quantity: e.target.value })}
                   value={this.state.quantity} />
               </div>
